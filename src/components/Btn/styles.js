@@ -18,7 +18,7 @@ export const BtnContainer= styled.div`
     a {
         width: 100%;
         height: 100%;
-        color: ${ props => props.color ? `${props.color}px` : "#FFF"};
+        color: ${ props => props.color ? `${props.color}` : "#FFF"};
         text-decoration: none;
         text-align: center;
         padding: 0;
@@ -30,4 +30,22 @@ export const BtnContainer= styled.div`
     a:hover {
         font-weight: bold;
     } 
+
+    button {
+        width:100%;
+        height: 100%;
+        border: none;
+        text-align: center;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        font-size: ${props => props.fontSize ? `${props.fontSize}px` : "16px"};
+        color: ${ props => props.color ? `${props.color}` : "#FFF"};
+    }
+    button:hover {
+        font-weight: bold;
+        cursor: pointer;
+    }
 `;

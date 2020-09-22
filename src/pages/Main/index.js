@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import api from "../../services/api";
 import Card from '../../components/Card';
 import Btn from '../../components/Btn';
+import { LoadSimple } from '../../components/Loadings';
 
 import { Container } from './styles';
 
@@ -14,6 +15,7 @@ export default function Main (){
     useEffect( () => {
 
         async function fetchData() {
+            
             
             const response = await api.get('/products');
             const data = response.data.data;
@@ -28,15 +30,20 @@ export default function Main (){
     }, [] );
 
     return (
+
         <Container>
-        { data.map( prod => (
-            <div className="card-area" key={prod.id}>
-                <Card key={prod.id} props={prod} showText={false} />
-                <div className="btn-area">
-                    <Btn key={prod.id} link={"/produtos/"+prod.id} name={"Detalhe"} />
-                </div>
-            </div>
-        ) ) }
+            { data.length > 1 ? 
+               
+                data.map( prod => (
+                    <div className="card-area" key={prod.id}>
+                        <Card key={prod.id} props={prod} showText={false} />
+                        <div className="btn-area">
+                            <Btn key={prod.id} link={"/produtos/"+prod.id} name={"Detalhe"} />
+                        </div>
+                    </div>
+                
+        ) ) : <LoadSimple/> }
         </Container>
+        
     );  
 }
