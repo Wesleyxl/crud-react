@@ -9,7 +9,7 @@ export const FormContainer = styled.div`
     align-items: center;
     padding: 15px;
     
-    form {
+    .form {
         max-width: 700px;
         width: 100%;
         border: 1px solid #000;

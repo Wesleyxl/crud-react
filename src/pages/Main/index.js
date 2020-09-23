@@ -10,7 +10,7 @@ import { Container } from './styles';
 export default function Main (){
 
     const [data, setData] = useState([]);
-    const [config, setConfig ] = useState([]);
+    // const [config, setConfig ] = useState([]);
 
     useEffect( () => {
 
@@ -19,10 +19,10 @@ export default function Main (){
             
             const response = await api.get('/products');
             const data = response.data.data;
-            const config = response.data;
+            // const config = response.data;
 
             setData(data);
-            setConfig(config);
+            // setConfig(config);
         }
         
         fetchData()

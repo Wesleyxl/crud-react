@@ -39,6 +39,11 @@ export const FormArea = styled.div`
     label {
         font-weight: bold;
     }
+    .btn-area {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
 
 
 `;
