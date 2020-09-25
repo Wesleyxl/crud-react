@@ -2,7 +2,6 @@ import React from 'react';
 
 import { CardContainer } from './styles';
 
-import image from '../../img/img-1.webp';
 
 export default function Card({props, showText, link}) {
 
@@ -10,9 +9,6 @@ export default function Card({props, showText, link}) {
         <CardContainer>
             <div className="title">
                 <h1>{props ? props.name : ''}</h1>
-            </div>
-            <div className="img-area">
-                <img src={image} alt=""/>
             </div>
             <div className="description">
                 <p><strong>Descrição: </strong>{props ? props.description : ''}</p>

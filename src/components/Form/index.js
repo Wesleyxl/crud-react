@@ -13,14 +13,14 @@ const initialValue = {
 
 export function FormRegisterProd() {
 
-    const [ values, setValues ] = useState([]);
+    const [ values, setValues ] = useState([initialValue]);
+    const [error, setError] = useState(null);
 
     function handleChange(ev) {
 
         const { name, value } = ev.target;
 
         setValues({ ...values, [name]: value });
-
     }
 
 
@@ -32,22 +32,28 @@ export function FormRegisterProd() {
 
             if ( response.data.errors ) {
 
-                console.log(response);
+                setError(response.data.errors);
 
+            } else {
+
+                return window.location.href = "/produtos#sucesso";
             }
-            console.log(response)
-            // window.location.replace("/product/#success");
 
         } )
         
 
     }
-
-
     return(
 
         <form onSubmit={handleSubmit}>
             <FormArea>
+            { error === null ? <div className="none"></div> : 
+                <div className="error-area">
+                    <span>{error.texto}</span>
+                    <span>{error.descrição}</span>
+                    <span>{error.nome}</span>
+                </div>
+            }
                 <div className="title">
                     <h1>Cadastrar Produtos</h1>
                 </div>
@@ -79,12 +85,10 @@ export function FormRegisterProd() {
 }
 
 
-export function FormEditProd({props}) {
-
+export function FormEditProd(props) {
     return(
 
         <FormAreaEdit>
-
             <div className="title">
                 <h1>Editar Produtos</h1>
             </div>
@@ -92,15 +96,15 @@ export function FormEditProd({props}) {
             <div className="input-area">
                 <div className="input">
                     <label htmlFor="text">Titulo: </label>
-                    <input type="text" name="name" id="name" placeholder="Titulo do produto" defaultValue={props.name}  />
+                    <input type="text" name="name" id="name" placeholder="Titulo do produto" onChange={props.change} defaultValue={props.props.name}  />
                 </div>
                 <div className="text-area">
                     <label htmlFor="text">Descrição: </label>
-                    <textarea name="description" id="description" rows="3" placeholder="Descrição do produto" defaultValue={props.description}></textarea>
+                    <textarea name="description" id="description" rows="3" placeholder="Descrição do produto" onChange={props.change} defaultValue={props.props.description}></textarea>
                 </div>
                 <div className="text-area">
                     <label htmlFor="text">Texto: </label>
-                    <textarea name="text" id="text" rows="5" placeholder="Texto do produto" defaultValue={props.text}></textarea>
+                    <textarea name="text" id="text" rows="5" placeholder="Texto do produto" onChange={props.change} defaultValue={props.props.text}></textarea>
                 </div>
             </div>
 

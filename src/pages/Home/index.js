@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Container } from './style';
 
-import FormLogin from '../../components/Form/FormLogin';
+import Welcome from '../../components/Welcome';
 
 const Home = () => (
 
     <Container>
-        <FormLogin/>
+        <Welcome/>
     </Container>
 
 );

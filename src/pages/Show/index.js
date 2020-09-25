@@ -27,16 +27,24 @@ export default function Show() {
         fetchData();
 
     },[id] );
-    console.log(data)
+    
+    var url = window.location.href;
+    url = url.split('/');
+    url = url[4];
+    url = url.split('#');   
+    url = url[1];
+
     return(
         
         <Container>
-        
+
+            {url === 'editado' ? <div className="alert-success">Produto editado com sucesso</div> : ''}
             { data.length < 1 ? <LoadSimple/> :
                 <div className="card-area">
                     <Card  props={data} showText={true} link={"/produtos"} />
                     <div className="btn-area">
                         <Btn link={"/produtos"} name={"Voltar"} />
+                        <Btn  width={100} height={30} background={'red'} fontSize={20} color={'#FFF'} link={'/produtos/delete/'+data.id} name={"Apagar"} />
                         <Btn link={"/produtos/editar/"+data.id} name={"Editar"} background="blue" />
                     </div>
                 </div>

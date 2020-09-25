@@ -1,6 +1,23 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
+
+    .none {
+            opacity: 0;
+        }
+
+    .error-area {
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #FFC107;
+        border-radius: 20px;
+    }
+
     width: 100%;
     height: 100vh;
     display: flex;

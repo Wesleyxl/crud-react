@@ -29,11 +29,22 @@ export default function Main (){
 
     }, [] );
 
+    var url = window.location.href;
+    
+    url = url.split('/');
+    url = url[3];
+    url = url.split('#');
+    url = url[1];
+    
+
+
     return (
 
         <Container>
+            {url === 'deletado' ? <div className="alert-delete">Produto deletado com sucesso</div> : <div className="none"></div>}
+            {url === 'cadastrado' ? <div className="alert-success">Produto cadastrado com sucesso</div> : <div className="none"></div>}
             { data.length > 1 ? 
-               
+                
                 data.map( prod => (
                     <div className="card-area" key={prod.id}>
                         <Card key={prod.id} props={prod} showText={false} />
